@@ -1,13 +1,17 @@
 {
-    "name": "untamed-worlds/cart",
-    "description": "Immutable cart package for PHP",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Jonathan Garbee",
-            "email": "jonathan@garbee.me"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {}
+  "name": "untamed-worlds/cart",
+  "description": "Immutable cart package for PHP",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jonathan Garbee",
+      "email": "jonathan@garbee.me"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "^5.1.0",
+    "sebastian/money": "1.5.*"
+  }
 }
