@@ -11,6 +11,9 @@
   "autoload": {
     "psr-4": {"UntamedWorlds\\Cart\\": "src/"}
   },
+  "autoload-dev": {
+    "psr-4": {"UntamedWorlds\\Cart\\Tests\\": "tests/"}
+  },
   "minimum-stability": "stable",
   "require": {},
   "require-dev": {

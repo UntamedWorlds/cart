@@ -5,6 +5,7 @@ namespace UntamedWorlds\Cart;
 use stdClass;
 use UntamedWorlds\Cart\Contract\Cart\Item as ItemContract;
 use SebastianBergmann\Money\Money;
+use UntamedWorlds\Cart\Exceptions\InvalidQuantityException;
 
 class Item implements ItemContract
 {
@@ -14,6 +15,9 @@ class Item implements ItemContract
 
     /**
      * Item constructor.
+     *
+     * @throws InvalidQuantityException
+     *
      * @param string $id
      * @param Money $price
      * @param int $quantity
@@ -23,6 +27,9 @@ class Item implements ItemContract
         Money $price,
         int $quantity
     ) {
+        if ($quantity <= 0) {
+            throw new InvalidQuantityException();
+        }
         $this->id = $id;
         $this->price = $price;
         $this->quantity = $quantity;
@@ -44,19 +51,25 @@ class Item implements ItemContract
         return $this->quantity;
     }
 
+    public function subtotal() : Money
+    {
+        return $this->price->multiply($this->quantity);
+    }
+
+
     public function jsonSerialize()
     {
         return [
             'id' => $this->id(),
-            'price' => $this->price()->getConvertedAmount(),
+            'price' => $this->price()->jsonSerialize(),
             'quantity' => $this->quantity()
         ];
     }
 
-    public function fromStdObj(stdClass $obj) : self {
-        return new static(
+    public static function fromStdObj(stdClass $obj) {
+        return new self(
             $obj->id,
-            Money::fromString($obj->price, 'USD'),
+            new Money($obj->price->amount, $obj->price->currency),
             $obj->quantity
         );
     }
