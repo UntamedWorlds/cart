@@ -3,7 +3,7 @@
 namespace UntamedWorlds\Cart;
 
 use stdClass;
-use \UntamedWorlds\Cart\Contract\Cart\Item as ItemContract;
+use UntamedWorlds\Cart\Contract\Cart\Item as ItemContract;
 use SebastianBergmann\Money\Money;
 
 class Item implements ItemContract
