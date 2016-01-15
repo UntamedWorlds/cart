@@ -53,7 +53,7 @@ class Item implements ItemContract
         ];
     }
 
-    public function fromJson(stdClass $obj) : self {
+    public function fromStdObj(stdClass $obj) : self {
         return new static(
             $obj->id,
             Money::fromString($obj->price, 'USD'),
