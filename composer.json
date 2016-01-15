@@ -20,6 +20,7 @@
     "phpunit/phpunit": "^5.1.0",
     "sebastian/money": "1.5.*",
     "illuminate/session": "^5.0",
-    "illuminate/contracts": "^5.0"
+    "illuminate/contracts": "^5.0",
+    "illuminate/events": "^5.0"
   }
 }
