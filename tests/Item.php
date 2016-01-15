@@ -8,6 +8,11 @@ use UntamedWorlds\Cart\Item as ItemInstance;
 
 class Item extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var ItemInstance
+     */
+    protected $item;
+
     public function setUp()
     {
         $this->item = new ItemInstance(
